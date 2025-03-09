@@ -1,0 +1,16 @@
+@import 'font';
+@import 'var';
+
+body {
+    font-family: $font;
+} 
+
+a {
+    font-size: 25px;
+    font-weight: 600;
+    color: $dark;
+    transition: $tr;
+}
+a:hover {
+    color: $accent;
+}
