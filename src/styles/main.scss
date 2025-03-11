@@ -46,6 +46,7 @@ $tr: .3s;
 body {
     font-family: $font;
     font-weight: 400;
+    background: #1F2023;
 } 
 
 a {
@@ -142,4 +143,97 @@ a {
         color: $light;
         border-bottom: 2px solid $light;
     }
+}
+
+.container {
+    width: 100%;
+    max-width: 1830px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.banner {
+    display: flex;
+    margin-top: 40px;
+    padding: 100px 50px;
+    background: url(../images/bg-banner.jpg) no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+}
+
+.title_type-first {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $light;
+}
+
+.title_type-second {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.banner__main {    
+    width: 100%;
+    max-width: 1031px;
+}
+
+.banner-box {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 30px;
+    border: 1px solid $light;
+    border-radius: 20px;
+    color: $light;
+    position: relative;
+}
+
+.banner-box__text {
+    max-width: 669px;
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+.banner-box__image-wrapper {
+    width: 336px;
+    height: 273px;
+    min-width: 336px;
+    max-height: 273px;
+    position: absolute;
+    top: -68px;
+    right: -21px;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.banner__btn {
+    margin-top: 135px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 54px 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $light;
+    background: $accent;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
