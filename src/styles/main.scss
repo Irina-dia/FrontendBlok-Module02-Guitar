@@ -67,7 +67,7 @@ p {
     height: 71px;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 999;
 
     &::before {
         content: '';
@@ -239,20 +239,44 @@ p {
         border: 1px solid $light;
         border-right: none;
         border-radius: 20px 0 0 20px;
-        
-        p {
-            display: block;
-            font-weight: 200;
-            font-size: 24px;
-            line-height: 1.1;
-
-            span {
-                display: block;
-                margin-top: 15px;
-                font-weight: 700;
-                font-size: 32px;
+        transition: $tr;
+        &:hover {
+            background: $accent;
+            border-color: $accent;
+            &::after {
+                opacity: 1;
+            }
+            .banner__decor {                
+                background: $accent;
+                border-color: $accent;
             }
         }
+    }
+        
+    &__text {
+        font-weight: 200;
+        font-size: 24px;
+        line-height: 1.1;
+
+        span {
+            display: block;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 32px;
+        }
+    }
+
+    &__item::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -80px;
+        display: block;
+        width: 80px;
+        height: 151px;
+        background: url(../images/main-banner/banner-info-decor.svg) no-repeat;
+        background-size: contain;
+
     }
 
     &__item::after {
@@ -263,8 +287,10 @@ p {
         display: block;
         width: 80px;
         height: 151px;
-        background: url(../images/main-banner/banner-info-decor.svg) no-repeat;
+        background: url(../images/main-banner/banner-info-decor-h.svg) no-repeat;
         background-size: contain;
+        opacity: 0;
+        transition: $tr;
 
     }
 
@@ -279,6 +305,7 @@ p {
         align-items: center;
         border: 1px solid $light;
         border-radius: 10px;
+        transition: $tr;
     }
 }
 
