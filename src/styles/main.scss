@@ -240,16 +240,38 @@ p {
         border-right: none;
         border-radius: 20px 0 0 20px;
         transition: $tr;
+        z-index: 1;
         &:hover {
-            background: $accent;
-            border-color: $accent;
-            &::after {
+            &::before {
+                width: 100%;
                 opacity: 1;
+                transform: translateX(0) scale(1);
             }
             .banner__decor {                
                 background: $accent;
                 border-color: $accent;
+                &::after {
+                    opacity: 1;
+                    transform: translate(0, 0) scale(1);
+                }
             }
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 149px;
+            background: $accent;
+            position: absolute;
+            top: -1px;
+            right: 0;
+            border: 1px solid $accent;
+            border-radius: 20px 0 0 20px;
+            opacity: 0;
+            z-index: -1;
+            transform: translateX(50%) scale(0);
+            transition: $tr;
         }
     }
         
@@ -266,34 +288,6 @@ p {
         }
     }
 
-    &__item::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        right: -80px;
-        display: block;
-        width: 80px;
-        height: 151px;
-        background: url(../images/main-banner/banner-info-decor.svg) no-repeat;
-        background-size: contain;
-
-    }
-
-    &__item::after {
-        content: '';
-        position: absolute;
-        top: -1px;
-        right: -80px;
-        display: block;
-        width: 80px;
-        height: 151px;
-        background: url(../images/main-banner/banner-info-decor-h.svg) no-repeat;
-        background-size: contain;
-        opacity: 0;
-        transition: $tr;
-
-    }
-
     &__decor {
         position: absolute;
         top: 0;
@@ -306,6 +300,35 @@ p {
         border: 1px solid $light;
         border-radius: 10px;
         transition: $tr;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: 0;
+            display: block;
+            width: 80px;
+            height: 151px;
+            background: url(../images/main-banner/banner-info-decor.svg) no-repeat;
+            background-size: contain;
+    
+        }
+    
+        &::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: 0;
+            display: block;
+            width: 80px;
+            height: 151px;
+            background: url(../images/main-banner/banner-info-decor-h.svg) no-repeat;
+            background-size: contain;
+            transform: translate(-50%, 0) scale(0);
+            opacity: 0;
+            transition: $tr;
+    
+        }
     }
 }
 
