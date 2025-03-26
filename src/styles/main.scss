@@ -556,3 +556,68 @@ p {
         }
     }
 }
+
+.accordion {
+    &__btn {
+        margin-top: 50px;
+        padding: 0 25px 0 30px;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $font;
+        font-size: 32px;
+        color: $accent;
+        background: $light;
+        box-sizing: border-box;
+        border-radius: 20px;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: url(../images/ui/minus.svg) no-repeat;
+            background-size: contain;
+        }
+
+        &.active {           
+            &::after {
+                background: url(../images/ui/plus.svg) no-repeat;
+            }
+        }
+    }
+
+    &__panel {
+        margin-top: 24px;
+        width: 100%;
+        max-height: 0;
+        background: $light;
+        box-sizing: border-box;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    &__list {
+        margin: 30px 50px;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 300;
+        font-size: 24px;
+        color: $dark;
+
+        &::before {
+            content: '—';
+        }
+    }
+}
