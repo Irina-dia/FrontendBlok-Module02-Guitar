@@ -48,6 +48,7 @@ body {
     padding: 0;
     font-family: $font;
     font-weight: 400;
+    line-height: 1.1;
     color: $light;
     background: #1F2023;
     overflow-x: hidden;
@@ -171,7 +172,6 @@ p {
 .title_type-first {
     font-size: 64px;
     font-weight: 700;
-    line-height: 1.1;
     margin: 0 0 20px;
 }
 
@@ -179,7 +179,6 @@ p {
     margin-bottom: 30px;
     font-size: 24px;
     font-weight: 400;
-    line-height: 1.1;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -214,7 +213,6 @@ p {
         padding: 53px 0;
         font-weight: 600;
         font-size: 20px;
-        line-height: 1.1;
         letter-spacing: 0.05em;
         text-transform: uppercase;
         color: $light;
@@ -290,7 +288,6 @@ p {
     &__text {
         font-weight: 200;
         font-size: 24px;
-        line-height: 1.1;
 
         span {
             display: block;
@@ -400,7 +397,6 @@ p {
         box-sizing: border-box;
         font-weight: 200;
         font-size: 24px;
-        line-height: 1.1;
         color: $gray;
         border: 1px solid $gray;
         border-radius: 50px;
@@ -457,6 +453,7 @@ p {
         align-items: center;
         width: 68px;
         height: 68px;
+        background: transparent;
         border: 1px solid $light;
         border-radius: 100%;
         position: inherit;
@@ -494,7 +491,30 @@ p {
 
 .slider-teacher {
     &__item {
+        height: 707px;
         background-color: $dark;
+        border: 1px solid $dark;
+        border-radius: 50px;
+        position: relative;
+        overflow: hidden;
+        transition: $tr;
+
+        &:hover {
+            border-color:  $accent;
+            .slider-teacher__name, 
+            .slider-teacher__grid {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__grid {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: $tr;
     }
 
     &__image-wrapper {
@@ -505,6 +525,34 @@ p {
     }
 
     &__image {
+        object-fit: cover;
+        position: absolute;
+        bottom: 0;
+    }
+
+    &__name {
         width: 100%;
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        margin: 0;
+        font-size: 24px;
+        color: $gray;
+        opacity: 0;
+        transition: $tr;
+        z-index: 1;
+
+        &::before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 637px;
+            background: linear-gradient(42deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.00) 59.08%);
+            background-repeat: no-repeat;
+            left: -30px;
+            bottom: -30px;
+            z-index: -1;
+        }
     }
 }
