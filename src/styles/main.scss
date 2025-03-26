@@ -44,10 +44,13 @@ $accent: #7027e2;
 $tr: .3s;
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: $font;
     font-weight: 400;
     color: $light;
     background: #1F2023;
+    overflow-x: hidden;
 } 
 
 a {
@@ -191,11 +194,13 @@ p {
     border-radius: 50px;
 
     &__main {    
-        flex-basis: 61%;
+        flex-basis: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between ;
     }
 
     &__btn {
-        margin-top: 135px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -245,14 +250,14 @@ p {
             &::before {
                 width: 100%;
                 opacity: 1;
-                transform: translateX(0) scale(1);
+                transform: scale(1);
             }
             .banner__decor {                
                 background: $accent;
                 border-color: $accent;
                 &::after {
                     opacity: 1;
-                    transform: translate(0, 0) scale(1);
+                    transform: scale(1);
                 }
             }
         }
@@ -270,7 +275,8 @@ p {
             border-radius: 20px 0 0 20px;
             opacity: 0;
             z-index: -1;
-            transform: translateX(50%) scale(0);
+            transform: scale(0);
+            transform-origin: top right;
             transition: $tr;
         }
     }
@@ -324,7 +330,8 @@ p {
             height: 151px;
             background: url(../images/main-banner/banner-info-decor-h.svg) no-repeat;
             background-size: contain;
-            transform: translate(-50%, 0) scale(0);
+            transform: scale(0);
+            transform-origin: top left;
             opacity: 0;
             transition: $tr;
     
@@ -366,4 +373,49 @@ p {
     height: auto;
     max-width: 100%;
     max-height: 100%;
+}
+
+.tag {
+    display: flex;
+    gap: 64px;
+    margin-top: 150px;
+    padding-left: 44px;
+    animation: move-left 20s infinite linear alternate;
+    overflow: hidden;
+    &:hover {
+        animation-play-state: paused;
+    }
+    &__text {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        height: 46px;
+        box-sizing: border-box;
+        font-weight: 200;
+        font-size: 24px;
+        line-height: 1.1;
+        color: $gray;
+        border: 1px solid $gray;
+        border-radius: 50px;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: $accent;
+            border-radius: 50%;
+            left: -40px;
+        }
+    }
+}
+
+@keyframes move-left {
+    0% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
 }
