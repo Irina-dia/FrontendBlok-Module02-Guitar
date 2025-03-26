@@ -184,6 +184,12 @@ p {
     text-transform: uppercase;
 }
 
+.title_32 {
+    font-weight: 700;
+    font-size: 32px;
+    color: $gray;
+}
+
 .banner {
     display: flex;
     gap: 50px;
@@ -381,7 +387,6 @@ p {
     margin-top: 150px;
     padding-left: 44px;
     animation: move-left 20s infinite linear alternate;
-    overflow: hidden;
     &:hover {
         animation-play-state: paused;
     }
@@ -401,12 +406,14 @@ p {
         border-radius: 50px;
         &::before {
             content: '';
+            display: block;
             position: absolute;
             width: 16px;
             height: 16px;
             background-color: $accent;
             border-radius: 50%;
             left: -40px;
+            top: calc(50% - 8px);
         }
     }
 }
@@ -417,5 +424,87 @@ p {
     }
     100% {
         transform: translate(-100%, 0);
+    }
+}
+
+.course {
+    margin-top: 150px;
+    display: flex;
+    gap: 71px;
+
+    &__title {
+        flex-basis: 395px;
+    }
+
+    &__content {
+        flex-basis: calc(100% - 395px - 71px);
+        width: calc(100% - 395px - 71px);
+    }
+
+    &__control {
+        margin-top: 40px;
+    }
+}
+
+.course-control {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__prev, &__next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 68px;
+        height: 68px;
+        border: 1px solid $light;
+        border-radius: 100%;
+        position: inherit;
+        right: inherit;
+        left: inherit;
+        transition: $tr;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 49px;
+            height: 49px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        &:hover {
+            border: 1px solid $accent;
+            background: $accent;
+        }
+    }
+
+    &__prev {
+        &::after {
+            background: url(../images/ui/arrow-prev.svg) no-repeat center center;
+        }
+    }
+
+    &__next {
+        &::after {
+            background: url(../images/ui/arrow-next.svg) no-repeat center center;
+        }
+    }
+}
+
+.slider-teacher {
+    &__item {
+        background-color: $dark;
+    }
+
+    &__image-wrapper {
+        width: 438px;
+        height: 637px;
+        min-width: 438px;
+        max-height: 637px;
+    }
+
+    &__image {
+        width: 100%;
     }
 }
