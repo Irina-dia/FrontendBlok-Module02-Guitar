@@ -164,6 +164,21 @@ button {
     }
 }
 
+.logo {
+    &._max {
+        svg {
+            width: 400px;
+            height: 31px;
+        }
+    }
+    &._min {
+        svg {
+            width: 296px;
+            height: 22px;
+        }
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1830px;
@@ -743,7 +758,7 @@ button {
 
 .areas {
     margin: 150px 0;
-    
+
     &__link {
         position: relative;
         display: flex;
@@ -830,6 +845,102 @@ button {
                 width: 586px;
                 height: 439px;
                 background: url(../images/areas/bas-guitar.png) no-repeat;
+            }
+        }
+    }
+}
+
+.footer {
+    margin-bottom: 30px;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    background: $dark;
+    border-radius: $br-min;
+
+    &__text {
+        font-size: 16px;
+        line-height: 1.5;
+        & + & {
+            margin-top: 6px;
+        }
+    }
+
+    &__link {
+        font-weight: 700;
+        color: $accent;
+        box-shadow:  0 4px 0 -3px $accent;
+        transition: $tr;
+
+        &:hover {
+            box-shadow:  0 4px 0 -3px transparent;
+        }
+    }
+
+    &__copy {
+        margin-top: 20px;
+        text-align: right;
+    }
+}
+
+.social {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        background: $light;
+        border-radius: 10px;
+        transition: $tr;
+
+        &:hover {
+            background: $accent;
+            &::after {
+                background: $light;
+            }
+        }
+        
+        &::after {
+            content: '';
+            display: block;
+            background: $accent;
+            /* background-repeat: no-repeat;
+            background-size: cover; */
+            mask: center center / 100% no-repeat;
+            -webkit-mask: center center / 100% no-repeat;
+            transition: $tr;
+        }
+
+        &._wa {
+            &::after {
+                width: 28px;
+                height: 28px;
+                mask-image: url(../images/ui/wa.svg);
+                -webkit-mask-image: url(../images/ui/wa.svg);
+            }
+        }
+
+        &._vk {
+            &::after {
+                width: 33px;
+                height: 19px;
+                mask-image: url(../images/ui/vk.svg);
+                -webkit-mask-image: url(../images/ui/vk.svg);
+            }
+        }
+
+        &._tg {
+            &::after {
+                width: 25px;
+                height: 22px;
+                mask-image: url(../images/ui/tg.svg);
+                -webkit-mask-image: url(../images/ui/tg.svg);
             }
         }
     }
