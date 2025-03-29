@@ -43,6 +43,9 @@ $accent: #7027e2;
 
 $tr: .3s;
 
+$br-min: 20px;
+$br-max: 50px;
+
 body {
     margin: 0;
     padding: 0;
@@ -196,7 +199,7 @@ p {
     padding: 100px 50px;
     background: url(../images/bg-banner.jpg) no-repeat;
     background-size: cover;
-    border-radius: 50px;
+    border-radius: $br-max;
 
     &__main {    
         flex-basis: 60%;
@@ -218,7 +221,7 @@ p {
         color: $light;
         background: $accent;
         border: 1px solid $accent;
-        border-radius: 20px;
+        border-radius: $br-min;
         cursor: pointer;
         transition: $tr;
         @media(hover: hover) {
@@ -348,7 +351,7 @@ p {
     gap: 16px;
     padding: 30px;
     border: 1px solid $light;
-    border-radius: 20px;
+    border-radius: $br-min;
     position: relative;    
 
     &__text {
@@ -399,7 +402,7 @@ p {
         font-size: 24px;
         color: $gray;
         border: 1px solid $gray;
-        border-radius: 50px;
+        border-radius: $br-max;
         &::before {
             content: '';
             display: block;
@@ -494,7 +497,7 @@ p {
         height: 707px;
         background-color: $dark;
         border: 1px solid $dark;
-        border-radius: 50px;
+        border-radius: $br-max;
         position: relative;
         overflow: hidden;
         transition: $tr;
@@ -571,7 +574,8 @@ p {
         color: $accent;
         background: $light;
         box-sizing: border-box;
-        border-radius: 20px;
+        border: none;
+        border-radius: $br-min;
 
         &::after {
             content: '';
@@ -595,7 +599,7 @@ p {
         max-height: 0;
         background: $light;
         box-sizing: border-box;
-        border-radius: 20px;
+        border-radius: $br-min;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
     }
@@ -616,8 +620,46 @@ p {
         font-size: 24px;
         color: $dark;
 
+        /* & + & {
+            margin-bottom: 45px;
+        } */
+
         &::before {
             content: '—';
         }
     }
+}
+
+.steps {
+    margin-top: 150px;
+    padding: 150px 0;
+    border: 1px solid $light;
+    border-radius: $br-max;
+    background: linear-gradient(180deg, #1f2023 0%, #7027e2 50%, #1f2023 100%);
+    
+    &__list {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    &__item {
+        padding: 30px;
+        background: $light;
+        border-radius: $br-max;
+
+        &-text {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: $dark;
+        }
+    }
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
