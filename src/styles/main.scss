@@ -45,7 +45,10 @@ $tr: .3s;
 $br-min: 20px;
 $br-max: 50px;
 
+$r_desk_full_over: 1600px;
+$r_desk_full: 1500px;
 $r_desk: 1024px;
+$r_tab: 768px;
 
 body {
     margin: 0;
@@ -80,6 +83,9 @@ button {
     position: fixed;
     top: 0;
     z-index: 999;
+    @media (max-width: $r_tab) {
+        height: 66px;
+    }
 
     &::before {
         content: '';
@@ -90,6 +96,9 @@ button {
         left: 0;
         background: $accent;
         z-index: -1;
+        @media (max-width: $r_tab) {
+            top: -2px;
+        }
     }
 
     &__logo {
@@ -113,6 +122,12 @@ button {
             background-image:  url(../images/header-left.svg);
             background-repeat: no-repeat;
             background-size: contain;
+            @media (max-width: $r_tab) {
+                height: 66px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                right: -66px;
+            }
         }
 
         &::before {
@@ -126,6 +141,9 @@ button {
             background-image:  url(../images/header-bottom-left.svg);
             background-repeat: no-repeat;
             background-size: contain;
+            @media (max-width: $r_tab) {
+                top: 66px;
+            }
         }
     }
 
@@ -150,6 +168,12 @@ button {
             background-image:  url(../images/header-right.svg);
             background-repeat: no-repeat;
             background-size: contain;
+            @media (max-width: $r_tab) {
+                height: 66px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                left: -60px;
+            }
         }
 
         &::after {
@@ -163,6 +187,9 @@ button {
             background-image:  url(../images/header-bottom-right.svg);
             background-repeat: no-repeat;
             background-size: contain;
+            @media (max-width: $r_tab) {
+                top: 66px;
+            }
         }
     }
 
@@ -178,6 +205,10 @@ button {
                 border-bottom: 2px solid transparent;
             }
         }
+        
+        @media (max-width: $r_tab) {
+            font-size: 16px;
+        }
     }
 }
 
@@ -186,6 +217,9 @@ button {
         svg {
             width: 400px;
             height: 31px;
+            @media (max-width: $r_desk) {
+                width: clamp(300px, 39vw, 400px);
+            }
         }
     }
     &._min {
@@ -201,6 +235,7 @@ button {
     max-width: 1830px;
     margin: 0 auto;
     padding: 0 45px;
+    box-sizing: border-box;
 
     @media (max-width: $r_desk) {
         padding: 0 20px;
@@ -215,6 +250,12 @@ button {
     font-size: 64px;
     font-weight: 700;
     margin: 0 0 20px;
+    @media (max-width: $r_desk_full) {
+        font-size: clamp(50px,  4vw + 1rem, 64px); // значение отсюда https://modern-fluid-typography.vercel.app/
+    }
+    @media (max-width: $r_desk) {
+        font-size: clamp(40px,  4vw + 1rem, 50px);
+    }
 }
 
 .title_type-second {
@@ -233,12 +274,22 @@ button {
 
 .banner {
     display: flex;
+    justify-content: space-between;
     gap: 50px;
     margin-top: 135px;
     padding: 100px 50px;
     background: url(../images/bg-banner.jpg) no-repeat;
     background-size: cover;
     border-radius: $br-max;
+
+    @media (max-width: $r_desk_full) {
+        flex-direction: column;
+        padding: 80px 40px;
+    }
+
+    @media (max-width: $r_desk - 24px) {
+        padding: 50px 30px;
+    }
 
     &__main {    
         flex-basis: 60%;
@@ -267,6 +318,10 @@ button {
                 background: transparent;
             }
         }
+        @media (max-width: $r_desk_full) {
+            margin-top: 50px;
+            padding: 43px 0;
+        }
     }
 
     &__info {
@@ -274,6 +329,11 @@ button {
         display: flex;
         flex-direction: column;
         gap: 19px;
+        @media (max-width: $r_desk_full) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
     }
 
     &__item {
@@ -327,17 +387,34 @@ button {
             transform-origin: top right;
             transition: $tr;
         }
+
+        @media (max-width: $r_desk_full) {
+        }
+        @media (max-width: $r_desk - 24px) {
+            margin-right: 0;
+            padding: 24px 10px 24px 100px;
+            border-right: 1px solid $light;
+            border-radius: $br-min;
+            justify-content: center;
+        }
     }
         
     &__text {
         font-weight: 200;
         font-size: 24px;
+        @media (max-width: $r_desk - 24px) {
+            font-size: 18px;
+        }
 
         span {
             display: block;
             margin-top: 15px;
             font-weight: 700;
             font-size: 32px;
+            @media (max-width: $r_desk - 24px) {
+                margin-top: 12px;
+                font-size: 20px;
+            }
         }
     }
 
@@ -353,6 +430,11 @@ button {
         border: 1px solid $light;
         border-radius: 10px;
         transition: $tr;
+        @media (max-width: $r_desk - 24px) {
+            left: 30px;
+            top: calc(50% - 25px);
+            right: inherit;
+        }
 
         &::before {
             content: '';
@@ -364,7 +446,9 @@ button {
             height: 151px;
             background: url(../images/main-banner/banner-info-decor.svg) no-repeat;
             background-size: contain;
-    
+            @media (max-width: $r_desk - 24px) {
+                display: none;
+            }
         }
     
         &::after {
@@ -393,7 +477,14 @@ button {
     padding: 30px;
     border: 1px solid $light;
     border-radius: $br-min;
-    position: relative;    
+    position: relative; 
+    
+    &__info {
+        margin-right: 336px;
+        @media (max-width: $r_desk_full_over) {
+            margin-right: clamp(252px, 31vw, 336px);
+        }
+    }
 
     &__text {
         max-width: 669px;
@@ -411,6 +502,12 @@ button {
         height: 273px;
         min-width: 336px;
         max-height: 273px;
+        @media (max-width: $r_desk_full_over) {
+            top: clamp(-53px, 31vw, -61px);
+            width: clamp(252px, 31vw, 336px);
+            height: auto;
+            min-width: clamp(252px, 31vw, 336px);
+        }
     }
 }
 
@@ -428,6 +525,12 @@ button {
     margin-top: 150px;
     padding-left: 44px;
     animation: move-left 20s infinite linear alternate;
+    @media (max-width: $r_desk) {
+        margin-top: 100px;
+    }
+    @media (max-width: $r_tab) {
+        margin-top: 80px;
+    }
     
     @media (hover: hover) {
         &:hover {
@@ -474,6 +577,12 @@ button {
     margin-top: 150px;
     display: flex;
     gap: 71px;
+    @media (max-width: $r_desk) {
+        margin-top: 100px;
+    }
+    @media (max-width: $r_tab) {
+        margin-top: 80px;
+    }
 
     &__title {
         flex-basis: 395px;
@@ -789,6 +898,13 @@ button {
 
 .areas {
     margin: 150px 0;
+    
+    @media (max-width: $r_desk) {
+        margin: 100px 0;
+    }
+    @media (max-width: $r_tab) {
+        margin: 80px 0;
+    }
 
     &__link {
         position: relative;
