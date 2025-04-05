@@ -47,6 +47,7 @@ $br-max: 50px;
 
 $r_desk_full_over: 1600px;
 $r_desk_full: 1500px;
+$r_desk_wxga: 1366px;
 $r_desk: 1024px;
 $r_tab: 768px;
 
@@ -253,8 +254,8 @@ button {
     @media (max-width: $r_desk_full) {
         font-size: clamp(50px,  4vw + 1rem, 64px); // значение отсюда https://modern-fluid-typography.vercel.app/
     }
-    @media (max-width: $r_desk) {
-        font-size: clamp(40px,  4vw + 1rem, 50px);
+    @media (max-width: $r_tab) {
+        font-size: 40px;
     }
 }
 
@@ -270,6 +271,9 @@ button {
     font-weight: 700;
     font-size: 32px;
     color: $gray;
+    @media (max-width: $r_tab) {
+        font-size: 26px;
+    }
 }
 
 .banner {
@@ -351,7 +355,6 @@ button {
         border-radius: 20px 0 0 20px;
         transition: $tr;
         z-index: 1;
-        
         @media (hover: hover) {
             &:hover {
                 &::before {
@@ -396,6 +399,22 @@ button {
             border-right: 1px solid $light;
             border-radius: $br-min;
             justify-content: center;
+            @media (hover: hover) {
+                &:hover {  
+                    background: $accent;
+                    border: 1px solid $accent;
+                    &::before {
+                        opacity: 0;
+                    }
+                    .banner__decor {                
+                        background: transparent;
+                        border-color: $light;
+                        &::after {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
         }
     }
         
@@ -577,6 +596,10 @@ button {
     margin-top: 150px;
     display: flex;
     gap: 71px;
+    @media (max-width: $r_desk_full) {
+        flex-direction: column;
+        gap: 30px;
+    }
     @media (max-width: $r_desk) {
         margin-top: 100px;
     }
@@ -586,15 +609,27 @@ button {
 
     &__title {
         flex-basis: 395px;
+        @media (max-width: $r_desk_full) {
+            flex-basis: auto;
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     &__content {
         flex-basis: calc(100% - 395px - 71px);
         width: calc(100% - 395px - 71px);
+        @media (max-width: $r_desk_full) {
+            flex-basis: auto;
+            width: 100%;
+        }
     }
 
     &__control {
         margin-top: 40px;
+        @media (max-width: $r_desk_full) {
+            margin-top: 0;
+        }
     }
 }
 
@@ -616,6 +651,11 @@ button {
         right: inherit;
         left: inherit;
         transition: $tr;
+        
+        @media (max-width: $r_desk_full) {
+            width: 48px;
+            height: 48px;
+        }
 
         &::after {
             content: '';
@@ -649,13 +689,21 @@ button {
 
 .slider-teacher {
     &__item {
-        height: 707px;
+        height: min(707px, 36vw);
         background-color: $dark;
         border: 1px solid $dark;
         border-radius: $br-max;
         position: relative;
         overflow: hidden;
         transition: $tr;
+        box-sizing: border-box;
+        z-index: 2;
+        @media (max-width: $r_desk_full) {
+            height: min(672px, 47vw);
+        }
+        @media (max-width: $r_tab) {            
+            border: 1px solid $accent;
+        }
 
         @media (hover: hover) {
             &:hover {
@@ -679,9 +727,12 @@ button {
 
     &__image-wrapper {
         width: 438px;
-        height: 637px;
+        height: min(637px, 32vw);
         min-width: 438px;
-        max-height: 637px;
+        max-height: min(637px, 32vw);
+        @media (max-width: $r_desk_full) {
+            height: min(615px, 43vw);
+        }
     }
 
     &__image {
@@ -696,12 +747,36 @@ button {
         left: 30px;
         bottom: 30px;
         margin: 0;
-        font-size: 24px;
+        font-size: clamp(16px, 2vw - 0.75rem, 24px);;
         color: $gray;
         opacity: 0;
         transition: $tr;
         z-index: 1;
-
+        @media (max-width: $r_desk_full) {
+            text-align: center;
+            left: 0;
+        }
+        &._desktop {
+            @media (max-width: $r_tab) {
+                display: none;
+            }
+        }
+        &._mobile {
+            display: none;
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: center;
+            position: inherit;
+            left: inherit;
+            bottom: inherit;
+            opacity: 1;
+            @media (max-width: $r_tab) {
+                display: block;
+            }
+            &::before {
+                display: none;
+            }
+        }
         &::before {
             position: absolute;
             content: '';
@@ -713,6 +788,9 @@ button {
             left: -30px;
             bottom: -30px;
             z-index: -1;
+            @media (max-width: $r_desk_full) {
+                left: 0;
+            }
         }
     }
 }
@@ -797,11 +875,26 @@ button {
     border-radius: $br-max;
     background: linear-gradient(180deg, #1f2023 0%, #7027e2 50%, #1f2023 100%);
     
+    @media (max-width: $r_desk) {
+        margin: 100px auto 0;
+        padding: 100px 0;
+    }
+    @media (max-width: $r_tab) {
+        margin: 80px auto 0;
+        padding: 80px 0;
+    }
+
     &__list {
         margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
+        @media (max-width: $r_desk) {           
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: $r_tab) {
+            gap: 20px;
+        }
     }
 
     &__item {
@@ -923,6 +1016,11 @@ button {
             margin-bottom: 30px;
         }
 
+        @media (max-width: $r_desk) {
+            font-size: 20px;
+            padding: 20px 29px;
+        }
+
         @media (hover: hover) {
             &:hover {
                 background: $accent;
@@ -951,22 +1049,27 @@ button {
         
         &::before {
             position: absolute;
-            left: 769px;
+            //left: 769px;
+            left: 44vw;
             content: '';
             display: block;
             background-size: contain;
+            background-position: center;
             opacity: 0;
             transform: scale(0);
             transition: $tr;
             z-index: 1;
+            @media (max-width: $r_desk_wxga) {
+                display: none;
+            }
         }
 
         &._acoustic {
             &::before {
-                top: calc(100% - 250px);
-                width: 568px;
+                width: clamp(384px, 37vw, 568px);
                 height: 365px;
                 background: url(../images/areas/acoustic.png) no-repeat;
+                top: calc(100% - 250px);
             }
         }
 
@@ -1007,6 +1110,9 @@ button {
     justify-content: space-between;
     background: $dark;
     border-radius: $br-min;
+    @media (max-width: $r_desk_wxga) {
+        grid-template-columns: 1fr 160px;
+    }
 
     &__text {
         font-size: 16px;
@@ -1029,9 +1135,19 @@ button {
         }
     }
 
+    &__info {        
+        @media (max-width: $r_desk_wxga) {
+            grid-column: 1 / 3;
+        }
+    }
+
     &__copy {
         margin-top: 20px;
-        text-align: right;
+        text-align: right;       
+        @media (max-width: $r_desk_wxga) {
+            grid-column: 1 / 3;
+            text-align: left;  
+        }
     }
 }
 
