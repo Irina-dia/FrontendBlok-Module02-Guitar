@@ -45,6 +45,8 @@ $tr: .3s;
 $br-min: 20px;
 $br-max: 50px;
 
+$r_desk: 1024px;
+
 body {
     margin: 0;
     padding: 0;
@@ -94,7 +96,11 @@ button {
         padding: 17px 45px 0;
         background-color: $accent;
         border-radius: 10px 0 0 0;
-        position: relative;
+        position: relative;        
+
+        @media (max-width: $r_desk) {
+            padding: 17px 20px 0;
+        }
 
         &::after {
             content: '';
@@ -127,7 +133,11 @@ button {
         padding: 17px 45px 0;
         background-color: $accent;
         border-radius: 0 10px 0 0;
-        position: relative;
+        position: relative;        
+
+        @media (max-width: $r_desk) {
+            padding: 17px 20px 0;
+        }
 
         &::before {
             content: '';
@@ -161,6 +171,13 @@ button {
         font-size: 20px;
         color: $light;
         border-bottom: 2px solid $light;
+        transition: $tr;
+
+        @media (hover: hover) {
+            &:hover {
+                border-bottom: 2px solid transparent;
+            }
+        }
     }
 }
 
@@ -183,7 +200,11 @@ button {
     width: 100%;
     max-width: 1830px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 45px;
+
+    @media (max-width: $r_desk) {
+        padding: 0 20px;
+    }
 }
 
 .title {
@@ -270,18 +291,21 @@ button {
         border-radius: 20px 0 0 20px;
         transition: $tr;
         z-index: 1;
-        &:hover {
-            &::before {
-                width: 100%;
-                opacity: 1;
-                transform: scale(1);
-            }
-            .banner__decor {                
-                background: $accent;
-                border-color: $accent;
-                &::after {
+        
+        @media (hover: hover) {
+            &:hover {
+                &::before {
+                    width: 100%;
                     opacity: 1;
                     transform: scale(1);
+                }
+                .banner__decor {                
+                    background: $accent;
+                    border-color: $accent;
+                    &::after {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
                 }
             }
         }
@@ -404,8 +428,11 @@ button {
     margin-top: 150px;
     padding-left: 44px;
     animation: move-left 20s infinite linear alternate;
-    &:hover {
-        animation-play-state: paused;
+    
+    @media (hover: hover) {
+        &:hover {
+            animation-play-state: paused;
+        }
     }
     &__text {
         position: relative;
@@ -490,9 +517,11 @@ button {
             background-size: contain;
         }
 
-        &:hover {
-            border: 1px solid $accent;
-            background: $accent;
+        @media (hover: hover) {
+            &:hover {
+                border: 1px solid $accent;
+                background: $accent;
+            }
         }
     }
 
@@ -519,11 +548,13 @@ button {
         overflow: hidden;
         transition: $tr;
 
-        &:hover {
-            border-color:  $accent;
-            .slider-teacher__name, 
-            .slider-teacher__grid {
-                opacity: 1;
+        @media (hover: hover) {
+            &:hover {
+                border-color:  $accent;
+                .slider-teacher__name, 
+                .slider-teacher__grid {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -776,17 +807,19 @@ button {
             margin-bottom: 30px;
         }
 
-        &:hover {
-            background: $accent;
-            border-radius: 10px;
+        @media (hover: hover) {
+            &:hover {
+                background: $accent;
+                border-radius: 10px;
 
-            &::after {
-                transform: rotate(45deg);
-            }
-            
-            &::before {
-                opacity: 1;
-                transform: scale(1);
+                &::after {
+                    transform: rotate(45deg);
+                }
+                
+                &::before {
+                    opacity: 1;
+                    transform: scale(1);
+                }
             }
         }
 
@@ -873,8 +906,10 @@ button {
         box-shadow:  0 4px 0 -3px $accent;
         transition: $tr;
 
-        &:hover {
-            box-shadow:  0 4px 0 -3px transparent;
+        @media (hover: hover) {
+            &:hover {
+                box-shadow:  0 4px 0 -3px transparent;
+            }
         }
     }
 
@@ -899,10 +934,12 @@ button {
         border-radius: 10px;
         transition: $tr;
 
-        &:hover {
-            background: $accent;
-            &::after {
-                background: $light;
+        @media (hover: hover) {
+            &:hover {
+                background: $accent;
+                &::after {
+                    background: $light;
+                }
             }
         }
         
